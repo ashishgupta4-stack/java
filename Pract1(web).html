@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        <!---This is internal functionn-->
+        function wishme()
+        {
+             alert("Curious to learn internal JS")
+        }
+    </script>
+
+    <!-- here we will use the EXTERNAL Javascript file -->
+     <script src="C:\Ashish\external.js"></script>
+
+</head>
+<body>
+    <!--TYPES OF js
+      1.INLINE
+      2.INTERNAL
+      3.EXTERNAL
+    -->
+
+    <P id="output"></P>
+      <!---This is inline JAVASCRIPT-->
+      <button id="login" onclick="alert('welcome to the JAVASCRIPT')">login</button>"
+
+      <!-- Internal -->
+        <button id="login" onclick="wishme()">login</button>"
+
+      <!-- EXTERNAL -->
+        <button id="login" onclick="external()">login</button>"
+
+ 
+    
+</body>
+</html>
