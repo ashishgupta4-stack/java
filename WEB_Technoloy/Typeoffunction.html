@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+
+         //Windows: Press Shift + Alt + F for formatting the code
+       //3. Arrow function
+           var wishAF = () => {console.log("arrow function" - HELLO ARROW FUNCTION);}
+
+
+       //2 fUNCTION EPRESSION -- HOISTING NOT SUPPORTED
+         var wishFE = function(){
+         console.log("function expression - HELLO FUNCTION EXPRESSION");
+       }
+
+
+       //1. function declaration -- hoisting supported
+        function wishFD(){
+         console.log("function declaration--- HEllo function")
+        }
+
+
+       //4. Parameterized function
+       function Paradeclare(name,greeting){
+          console.log("Hello "+name+" "+greeting);
+         }
+
+        wishAF();
+        wishFE();
+        wishFD();
+
+       //5.immediately invoked / Self revoking function
+       (function () {
+         console.log(
+           "this function needs no explicit call and it will be called before everything else"); })();
+    </script>
+  </head>
+  <body>
+
+    <button onclick="Paradeclare('John', 'Good Morning')">Parameterized Function</button>
+  </body>
+</html>
