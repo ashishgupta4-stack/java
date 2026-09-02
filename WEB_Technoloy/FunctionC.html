@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+   
+    <script>
+        // 7.generic function-- ... means generic function can take any number of parameters  ... argument means object hwich contains all the values,
+        //  when we dont know how many parameters will be passed to the function
+        function sum(...numbers){
+            var temp=0;
+            for(var i=0; i <arguments.length; i++)
+                temp+=arguments[i];
+
+                return temp;
+
+        }
+            console.log("sum(11,22)=",sum(11,22));
+            console.log("sum(11,22,33)=",sum(11,22,33));
+            console.log("sum(11,22,33)=",sum(11,22,33,44));
+
+        
+    </script>
+<!-- <script>
+
+
+     function sum(...numbers){
+             temp=0;
+            for(string i=0; i <arguments.length; i++)
+                temp+=arguments[i];
+
+                return temp;
+
+        }
+            console.log("sum(11,22)=",sum(11,22));
+            console.log("sum(11,22,33)=",sum(11,22,33));
+            console.log("sum(11,22,33)=",sum(11,22,33,44));
+            </script> -->
+        
+</head>
+<body>
+    
+</body>
+</html>
