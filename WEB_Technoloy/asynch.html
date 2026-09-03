@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //12 Asynch functiion
+       async function myAsynchFunction(callback){
+
+        // await new Promise(resolve => setTimeout(callback,3000));
+        console.log("Asynch - start")
+        console.log("Will appear after 3 seconds",setTimeout(callback,3000));
+        console.log("Will appear after 1 second",setTimeout(callback,1000));
+        console.log("Asynch - end")
+
+    }
+    </script>
+</head>
+<body>
+    <button onclick = "functionAsParam(call)">Callback Function 1</button>
+    <button onclick = "functionAsParamTwo(call)">Callback Function 2</button>
+    <button onclick = "myAsynchFunction(call)">Asynch Function</button>
+</body>
+</html>

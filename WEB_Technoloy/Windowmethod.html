@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script>
+      setTimeout(()=>{console.log("setTimeout() called!!1")},3000);
+
+      function settingInterval(){
+            document.getElementById("output").innerHTML = Date();
+      }
+      //executed every 1 second as time interval
+
+      var timer;
+      function showTime(){
+        timer = setInterval(settingInterval,1000);
+      }
+      function stopTime(){
+        clearInterval(timer);
+      }
+
+    </script>
+</head>
+<body>
+    <p id="output"></p>
+    <button onclick="showTime()">showTime()</button>
+    <button onclick="settingInterval()">setInterval()</button>
+    
+</body>
+</html>

@@ -5,7 +5,7 @@
     <title>Document</title>
    
     <script>
-        // 7.generic function-- ... means generic function can take any number of parameters  ... argument means object hwich contains all the values,
+        // 7.generic function-- (...it is c)...means generic function can take any number of parameters  ... argument means object hwich contains all the values,
         //  when we dont know how many parameters will be passed to the function
         function sum(...numbers){
             var temp=0;
@@ -19,23 +19,41 @@
             console.log("sum(11,22,33)=",sum(11,22,33));
             console.log("sum(11,22,33)=",sum(11,22,33,44));
 
+            // 8. Constructor function -- it is used to create multiple objects of same type, it is a blueprint of object
+                console.log("8 contructor function");
+                var mul = new Function("a","b","return a*b");
+
+                console.log("mul(10,20)=",mul(10,20));
+                console.log("mul(10,30)=",mul(10,30));
+
+
+            // Constructor variation
+                function Person(name,age){
+                    this.name=name;
+                    this.age=age;
+                }
+                var person1 = new Person("Alice", 25);
+                console.log("person1.name=",person1.name );
+                console.log("person1.age=",person1.age);
+                console.log(Object.keys(person1));
+                console.log(Object.values(person1));
+            // 9. High order function
+            // function as parameter or function as return value
+            function getdiscount(fun,value){
+                return fun(value);
+            }   
+
+            const discount10 = (value) => value-value*0.01;
+            const discount20= (value) => value-value *0.02;
+
+            console.log("10% discount of price:", getdiscount(discount10,1000));
+             console.log("20% discount of price:", getdiscount(discount20,2000));
+
+
+            
         
     </script>
-<!-- <script>
 
-
-     function sum(...numbers){
-             temp=0;
-            for(string i=0; i <arguments.length; i++)
-                temp+=arguments[i];
-
-                return temp;
-
-        }
-            console.log("sum(11,22)=",sum(11,22));
-            console.log("sum(11,22,33)=",sum(11,22,33));
-            console.log("sum(11,22,33)=",sum(11,22,33,44));
-            </script> -->
         
 </head>
 <body>

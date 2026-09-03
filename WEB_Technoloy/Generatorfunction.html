@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+         var empid = 101;
+       function* generateEmpId(){
+            while(true){
+                console.log("Generate Employee ID:",empid);
+                empid++;
+                yield empid;
+            }
+
+
+            yield 1;
+            yield 2;
+            yield 3;
+            yield 4;
+            yield 5;
+
+       }
+      var checkEmpId = generateEmpId();
+    
+      // console.log(generateEmpId().next()); it will not work or give same value   repeatedly.
+       console.log(checkEmpId.next().value);
+       console.log(checkEmpId.next().value);
+       console.log(checkEmpId.next().value);
+       console.log(checkEmpId.next().value);
+       console.log(checkEmpId.next()); //5
+       console.log(checkEmpId.next());//6
+       console.log(checkEmpId.next());//7
+
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

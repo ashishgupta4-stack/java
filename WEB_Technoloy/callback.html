@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <script>
+        function functionAsParameter(callback){
+            console.log("Welcome to callback function");
+
+           return callback();
+        }
+
+        function functionAsParameterTo(callback){
+            console.log("Executing started");
+            console.log("Welcome to callback function");
+            
+          setTimeout(callback,3000);
+          console.log("Executing completed");
+        }
+        
+
+        function wish(){
+            console.log("have fun");
+        }
+
+
+    </script>
+    
+
+
+</head>
+<body>
+    <button onclick="functionAsParameter(wish)">callback_function</button>
+    <button onclick="functionAsParameterTo(wish)">endofexecution</button>
+    
+</body>
+</html>
