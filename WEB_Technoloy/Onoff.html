@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+              function bulbOn() {
+
+                  const bulbimage = document.getElementById("bulb");
+                  console.log("Currently:", bulbimage.getAttribute("src"));
+                  bulbimage.setAttribute("src", "img/Bulbon.png");
+                  console.log("After changing:", bulbimage.getAttribute("src"));
+              }
+              function bulbOff() {
+
+                  const bulbimage = document.getElementById("bulb");
+                  console.log("Currently:", bulbimage.getAttribute("src"));
+                  bulbimage.setAttribute("src", "img/bulboff.jpg");
+                  console.log("After changing:", bulbimage.getAttribute("src"));
+              }
+              function createListItem() {
+
+          const mySubs = document.getElementById("mySubs");
+
+          const newLi = document.createElement("li");
+
+          newLi.innerHTML = "new item";
+
+          mySubs.appendChild(newLi);
+      }
+
+
+      function replaceFirstListItem() {
+          const mySubs = document.getElementById("mySubs");
+
+          const repLi = document.createElement("li");
+
+          repLi.innerHTML = "replaced item";
+
+          const firstLi = mySubs.firstElementChild;
+
+          mySubs.replaceChild(repLi, firstLi);
+      }
+
+
+      function removeListItem() {
+          const mySubs = document.getElementById("mySubs");
+
+          const removeLi = mySubs.lastElementChild;
+
+          mySubs.removeChild(removeLi);
+      }
+    
+    </script>
+  </head>
+
+  <body>
+    <img id="bulb" src="img/bulboff.jpg" style="width: 100px; height: 100px" />
+    <br />
+    <button onclick="bulbOff()">Bulb OFF</button>
+    <button onclick="bulbOn()">Bulb ON</button>
+    <ol id="mySubs"></ol>
+
+    <button onclick="createListItem()">create list</button>
+    <button onclick="replaceFirstListItem()">Replace list</button>
+    <button onclick="removeListItem()">remove list</button>
+  </body>
+</html>

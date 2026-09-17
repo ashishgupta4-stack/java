@@ -1,87 +1,134 @@
-
 <!doctype html>
 <html lang="en">
 
 <head>
-    <script>
-        function getInfo() {
+<script>
 
-            var info = document.querySelectorAll("input[type='text']");
+function getInfo()
+{
+    var info = document.querySelectorAll("input[type='text']");
+    var menu = document.getElementById("Menu");
 
-            info.forEach(function(info) {
-                document.getElementById("Menu").innerHTML +=info.value + "<br>";
-            });
+    menu.innerHTML = "<h2>Customer Details</h2>";
 
-           
-            var food = document.querySelectorAll("input[type='checkbox']");
+    info.forEach(function(info)
+    {
+        menu.innerHTML += info.value + "<br>";
+    });
 
-            food.forEach(
-                function(food) {
-                if (food.checked) {
-                    document.getElementById("Menu").innerHTML +=food.value + "<br>";
-                }
-            });
+    menu.innerHTML += "<h2>Order Details</h2>";
+
+    var food = document.querySelectorAll("input[type='checkbox']");
+    var total = 0;
+
+    food.forEach(function(food)
+    {
+        if(food.checked)
+        {
+            var quantity = document.getElementById(food.dataset.id).value;
+            var price = parseInt(food.dataset.price);
+            var amount = price * quantity;
+
+            menu.innerHTML += food.value + " - ₹" + price +
+            " × " + quantity + " = ₹" + amount + "<br>";
+
+            total = total + amount;
         }
-    </script>
+    });
+
+    menu.innerHTML += "<h2>Total Bill = ₹" + total + "</h2>";
+
+    window.print();
+}
+
+</script>
 </head>
 
 <body>
 
-    Customer Details<br>
+Customer Details<br>
 
-    Name: <input type="text"><br>
-    Email: <input type="text"><br>
-    Phone No: <input type="text"><br>
+Name: <input type="text"><br>
+Email: <input type="text"><br>
+Phone No: <input type="text"><br>
 
-    <h1>
-        <ul>
-            $MENU
-        </ul>
-    </h1>
+<h1>
+<ul>
+$MENU
+</ul>
+</h1>
 
-    <h1><u>Soups</u></h1>
+<h1><u>Soups</u></h1>
 
-    <p id="Menu"></p>
+<input type="checkbox" value="Tomato Soup"
+data-price="150" data-id="q1">
+Tomato Soup
+Quantity: <input type="number" id="q1" value="1" min="1"><br>
 
-    <input type="checkbox" name="food" value="Tomato Soup - 150">
-    Tomato Soup<br>
-
-    <input type="checkbox" name="food" value="Chilli Soup - 150">
-    Chilli Soup<br>
-
-
-    <h1><u>Juice</u></h1>
-    <input type="checkbox" name="food" value="Mango Juice - 150">
-    Mango<br>
-    <input type="checkbox" name="food" value="Orange Juice - 150">
-    Orange<br>
+<input type="checkbox" value="Chilli Soup"
+data-price="150" data-id="q2">
+Chilli Soup
+Quantity: <input type="number" id="q2" value="1" min="1"><br>
 
 
-    <h1><u>Dessert</u></h1>
-    <input type="checkbox" name="food" value="Pudding - 150">
-    Pudding<br>
-    <input type="checkbox" name="food" value="Vanilla - 150">
-    Vanilla<br>
+<h1><u>Juice</u></h1>
 
-    <h1><u>Chinese</u></h1>
-    <input type="checkbox" name="food" value="Triple Rice - 220">
-    Triple Rice<br>
-    <input type="checkbox" name="food" value="Chicken 65 - 140">
-    Chicken 65<br>
+<input type="checkbox" value="Mango Juice"
+data-price="150" data-id="q3">
+Mango
+Quantity: <input type="number" id="q3" value="1" min="1"><br>
+
+<input type="checkbox" value="Orange Juice"
+data-price="150" data-id="q4">
+Orange
+Quantity: <input type="number" id="q4" value="1" min="1"><br>
 
 
-    <h1><u>Burger</u></h1>
+<h1><u>Dessert</u></h1>
 
-    <input type="checkbox" name="food" value="Veg Burger - 119">
-    Veg Burger<br>
+<input type="checkbox" value="Pudding"
+data-price="150" data-id="q5">
+Pudding
+Quantity: <input type="number" id="q5" value="1" min="1"><br>
 
-    <input type="checkbox" name="food" value="Chicken Burger - 220">
-    Chicken Burger<br>
+<input type="checkbox" value="Vanilla"
+data-price="150" data-id="q6">
+Vanilla
+Quantity: <input type="number" id="q6" value="1" min="1"><br>
 
-    <br>
 
-    <input type="button" value="Order Now" onclick="getInfo()">
+<h1><u>Chinese</u></h1>
+
+<input type="checkbox" value="Triple Rice"
+data-price="220" data-id="q7">
+Triple Rice
+Quantity: <input type="number" id="q7" value="1" min="1"><br>
+
+<input type="checkbox" value="Chicken 65"
+data-price="140" data-id="q8">
+Chicken 65
+Quantity: <input type="number" id="q8" value="1" min="1"><br>
+
+
+<h1><u>Burger</u></h1>
+
+<input type="checkbox" value="Veg Burger"
+data-price="119" data-id="q9">
+Veg Burger
+Quantity: <input type="number" id="q9" value="1" min="1"><br>
+
+<input type="checkbox" value="Chicken Burger"
+data-price="220" data-id="q10">
+Chicken Burger
+Quantity: <input type="number" id="q10" value="1" min="1"><br>
+
+<br>
+
+<input type="button" value="Order Now" onclick="getInfo()">
+
+<h2>Receipt</h2>
+
+<p id="Menu"></p>
 
 </body>
-
 </html>

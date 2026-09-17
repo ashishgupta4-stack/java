@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Order</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #ff6b35, #f4511e);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+}
+
+.box {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.box h2 {
+    margin-top: 0;
+    color: #e65100;
+    border-bottom: 2px solid #ffcc80;
+    padding-bottom: 10px;
+}
+
+#name,
+#email,
+#phone {
+    width: 31%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+}
+
+#name:focus,
+#email:focus,
+#phone:focus {
+    border-color: #ff6b35;
+    box-shadow: 0 0 5px rgba(255,107,53,0.3);
+}
+
+.menu-section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.menu-section h2 {
+    background: linear-gradient(135deg, #ff6b35, #f4511e);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 8px 0;
+    background: #fffaf5;
+    border-radius: 8px;
+    border: 1px solid #ffe0b2;
+    transition: 0.3s;
+}
+
+.item:hover {
+    background: #fff3e0;
+    transform: translateX(5px);
+}
+
+.item input {
+    width: 70px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.item input:focus {
+    border-color: #ff6b35;
+    outline: none;
+}
+
+#summary {
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+#summary p {
+    padding: 8px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#total {
+    color: #e65100;
+    font-size: 28px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #43a047, #2e7d32);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    transform: scale(1.02);
+}
+
+.receipt {
+    display: none;
+    border: 2px dashed #ff6b35;
+    background: #fffdf8;
+}
+
+.receipt h2 {
+    color: #e65100;
+}
+
+.receipt p {
+    padding: 5px;
+}
+
+@media (max-width: 700px) {
+
+    #name,
+    #email,
+    #phone {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .item {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #receipt,
+    #receipt * {
+        visibility: visible;
+    }
+
+    #receipt {
+        display: block;
+        position: absolute;
+        left: 5%;
+        top: 0;
+        width: 90%;
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Food Ordering System</h1>
+<div class="box"><h2>Customer Information</h2><input id="name" placeholder="Name"><input id="email" placeholder="Email"><input id="phone" placeholder="Phone"></div>
+<div id="menu"></div>
+<div class="box"><h2>Order Summary</h2><div id="summary">No items selected</div><h2>Total: ₹<span id="total">0</span></h2><button id="submit">Submit Order</button></div>
+<div id="receipt" class="box"></div>
+</div>
+<script>
+var data={Soups:[["Tomato Soup",80],["Manchow Soup",120]],Juices:[["Orange Juice",90],["Mango Juice",100]],Italian:[["Pizza",250],["Pasta",200]],Sandwiches:[["Veg Sandwich",120],["Cheese Sandwich",150]],Desserts:[["Ice Cream",100],["Brownie",130]]},menu=document.getElementById("menu");
+for(var cat in data){var s=document.createElement("div");s.className="box";var h=document.createElement("h2");h.textContent=cat;s.appendChild(h);data[cat].forEach(function(x){var d=document.createElement("div");d.className="item";d.innerHTML=x[0]+" - ₹"+x[1]+" <input type='number' min='0' value='0' data-name='"+x[0]+"' data-price='"+x[1]+"'>";d.querySelector("input").addEventListener("change",bill);s.appendChild(d)});menu.appendChild(s)}
+function bill(){var total=0,summary=document.getElementById("summary");summary.innerHTML="";document.querySelectorAll("#menu input").forEach(function(i){var q=+i.value;if(q){var t=q*+i.dataset.price;total+=t;var p=document.createElement("p");p.textContent=i.dataset.name+" × "+q+" = ₹"+t;summary.appendChild(p)}});document.getElementById("total").textContent=total}
+document.getElementById("submit").addEventListener("click",function(){var n=document.getElementById("name").value,e=document.getElementById("email").value,p=document.getElementById("phone").value,t=document.getElementById("total").textContent;if(!n||!e||!p||t=="0"){alert("Enter customer details and select items");return}var r=document.getElementById("receipt");r.innerHTML="<h2>Receipt</h2><p>Name: "+n+"</p><p>Email: "+e+"</p><p>Phone: "+p+"</p>"+document.getElementById("summary").innerHTML+"<h2>Final Amount: ₹"+t+"</h2><p>Thank you!</p>";r.style.display="block";window.print()});
+</script>
+</body>
+</html>
