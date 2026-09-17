@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function gbdn() {
+            var abc = document.getElementsByName("First");
+            alert(abc);
+
+            abc.forEach(i => { console.log(i.innerText) });
+        }
+
+        // dosomething function
+        function doSomething() {
+            var abc = document.getElementById("output");
+            alert(abc);
+            document.getElementById("output").innerHTML = "Good Afternoon";
+        }
+
+        function getEBTN(){
+            var myList = document.getElementsByTagName("p");
+            alert(myList);
+
+            alert(mylist.length);
+            for(let i=0; i<myList.length;i++)
+        {
+            myList[i].innerText = "hadings"+1;
+        }
+        }
+    </script>
+</head>
+
+<body>
+    <p id="output"></p>
+    <button onclick="doSomething()">do Something</button>
+    <p name="First">This is first para of this page</p>
+    <p name="First">This is second para of this page</p>
+    <p name="First">This is third para of this page</p>
+    <h1 name="First">this is header tag</h1>
+    <p id="output"> this is also part of para will not be selected by getElementsByName</p>
+    <button onclick="gbdn()">getElementsBy</button>
+    <button onclick="getEBTN()">getElementsByTagName</button>
+</body>
+
+</html>

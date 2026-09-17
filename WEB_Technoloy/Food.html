@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script>
+        function getInfo() {
+
+            var info = document.querySelectorAll("input[type='text']");
+
+            info.forEach(function(info) {
+                document.getElementById("Menu").innerHTML +=info.value + "<br>";
+            });
+
+           
+            var food = document.querySelectorAll("input[type='checkbox']");
+
+            food.forEach(
+                function(food) {
+                if (food.checked) {
+                    document.getElementById("Menu").innerHTML +=food.value + "<br>";
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    Customer Details<br>
+
+    Name: <input type="text"><br>
+    Email: <input type="text"><br>
+    Phone No: <input type="text"><br>
+
+    <h1>
+        <ul>
+            $MENU
+        </ul>
+    </h1>
+
+    <h1><u>Soups</u></h1>
+
+    <p id="Menu"></p>
+
+    <input type="checkbox" name="food" value="Tomato Soup - 150">
+    Tomato Soup<br>
+
+    <input type="checkbox" name="food" value="Chilli Soup - 150">
+    Chilli Soup<br>
+
+
+    <h1><u>Juice</u></h1>
+    <input type="checkbox" name="food" value="Mango Juice - 150">
+    Mango<br>
+    <input type="checkbox" name="food" value="Orange Juice - 150">
+    Orange<br>
+
+
+    <h1><u>Dessert</u></h1>
+    <input type="checkbox" name="food" value="Pudding - 150">
+    Pudding<br>
+    <input type="checkbox" name="food" value="Vanilla - 150">
+    Vanilla<br>
+
+    <h1><u>Chinese</u></h1>
+    <input type="checkbox" name="food" value="Triple Rice - 220">
+    Triple Rice<br>
+    <input type="checkbox" name="food" value="Chicken 65 - 140">
+    Chicken 65<br>
+
+
+    <h1><u>Burger</u></h1>
+
+    <input type="checkbox" name="food" value="Veg Burger - 119">
+    Veg Burger<br>
+
+    <input type="checkbox" name="food" value="Chicken Burger - 220">
+    Chicken Burger<br>
+
+    <br>
+
+    <input type="button" value="Order Now" onclick="getInfo()">
+
+</body>
+
+</html>

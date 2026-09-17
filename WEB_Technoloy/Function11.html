@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+           //ho to accessthe elements
+         
+
+            //query selector select first element ith match
+            //its use css selectors for match like -- #id, .class, element, attribute
+              function checkSports(){
+                // element  // Inserting checked we get what we have selected
+            var sports= document.querySelector("input[type='radio']:checked").value;
+
+            // id
+             //var sports= document.querySelector("#in").value;
+             //class
+            //  var sports= document.querySelector(".sports").value;
+            
+            document.getElementById("output").innerHTML = sports;
+            
+           }
+
+
+    </script>
+   
+</head>
+<body>
+    NAME: <input type="text" id="in"><br>
+    Email: <input type="text" id="in"><br>
+    <h1>this is registration</h1>
+    <h1>this is loginform</h1>
+
+    <input type="radio" name="sports" class="sports" value="Cricket">cricket
+    <input type="radio" name="sports" class="sports" value="Football">football
+    <input type="radio" name="sports" class="sports" value="Badminton">badminton
+    <br>
+    <p id="output"></p>
+    <input type="submit" value="submit" onclick="checkSports()">
+</body>
+</html>

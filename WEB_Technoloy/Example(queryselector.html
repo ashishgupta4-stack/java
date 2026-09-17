@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script>
+           function getInfo(){
+            var info= document.querySelectorAll("input[type='text']");
+
+            info.forEach(
+                function(info){
+                    document.getElementById("output").innerHTML+=info.value + "<br>";
+                }
+            );
+
+
+            var sports = document.getElementById("input[type='checkbox']");
+            sports.forEach(
+                function(sports){
+                    if(sports.checked)
+                
+                    document.getElementById("output").innerHTML+=sports.value +"<br>";
+                }
+                
+            )
+           }
+                
+            
+            //alert();
+           // info.forEach()
+
+           
+
+   </script>
+
+
+</head>
+<body>
+    NAME: <input type="text">
+    email: <input type="text">
+    city: <input type="text">
+
+    <hr> fav sports are:
+    <input type="checkbox" name="sports" value="table tennis">table tennis
+    <input type="checkbox" name="sports" value="squash">squash
+
+
+
+    <p id="output"></p>
+    <input type="submit" value="register" onclick="getInfo()">
+    
+    <!-- <button onclick="getInfo()">register</button> -->
+    
+</body>
+</html> 

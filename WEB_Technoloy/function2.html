@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+       
+        function getConfirmation() {
+            if (window.confirm("Are you an MCA Student?"))
+                console.log("Welcome Mca Aspirant");
+            else
+                console.log("Invalid Identity");
+        }
+
+        //window.prompt()
+        function dologin() {
+            var uname = window.prompt("Email");
+            var password = window.prompt("Password: ");
+
+            if (uname == "ashish.gupta4@somaiya.edu" && password == "6639")
+                alert("Login Successful");
+            else
+                alert("Login failed");
+        }
+
+        //window.open
+        let myWindow = window.open("","myWindow","height=300,width=300", "_Blank" );
+        // myWindow.write("<p>Welcome to th eblank page</p>");
+        
+        function setFocus(){
+            myWindow.focus();
+        }
+
+        function letBlur(){
+            myWindow.Blur();
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="getConfirmation()">Confirm Here</button>
+    //<button onclick="dologin()">login</button>
+
+    <button onclick="setFocus()">setFocus</button>
+    <button onclick="letBlur()">letBlur</button>
+</body>
+
+</html>
